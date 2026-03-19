@@ -1,53 +1,28 @@
 body {
-  font-family: "Courier New", monospace;
+  font-family: "Times New Roman", serif;
+  font-size: 14px;
   background: white;
   color: black;
-  margin: 20px;
 }
 
-.container {
-  display: flex;
-  gap: 40px;
-}
-
-.left {
-  width: 70%;
-}
-
-.right {
-  width: 30%;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  border: 1px solid black;
-}
-
-/* classic blue links */
 a {
-  color: blue;
-  text-decoration: underline;
+  color: #0000ee; /* classic link blue */
 }
 
 a:visited {
-  color: purple;
+  color: #551a8b; /* classic purple */
 }
 
 a:hover {
-  background: yellow;
-  color: black;
+  background: #0000ee;
+  color: white;
 }
 
-/* make it feel more "old web" */
 h1 {
-  font-size: 22px;
-}
-
-h2 {
-  font-size: 16px;
+  font-size: 18px;
+  margin-bottom: 5px;
 }
 
 p {
-  font-size: 14px;
+  margin: 5px 0;
 }
