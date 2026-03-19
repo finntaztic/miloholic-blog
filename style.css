@@ -1,5 +1,7 @@
 body {
-  font-family: monospace;
+  font-family: "Courier New", monospace;
+  background: white;
+  color: black;
   margin: 20px;
 }
 
@@ -19,13 +21,33 @@ body {
 img {
   max-width: 100%;
   height: auto;
+  border: 1px solid black;
 }
 
+/* classic blue links */
 a {
-  color: black;
+  color: blue;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: purple;
 }
 
 a:hover {
-  background: black;
-  color: white;
+  background: yellow;
+  color: black;
+}
+
+/* make it feel more "old web" */
+h1 {
+  font-size: 22px;
+}
+
+h2 {
+  font-size: 16px;
+}
+
+p {
+  font-size: 14px;
 }
