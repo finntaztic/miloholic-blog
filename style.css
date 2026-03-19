@@ -1,0 +1,31 @@
+body {
+  font-family: monospace;
+  margin: 20px;
+}
+
+.container {
+  display: flex;
+  gap: 40px;
+}
+
+.left {
+  width: 70%;
+}
+
+.right {
+  width: 30%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  background: black;
+  color: white;
+}
