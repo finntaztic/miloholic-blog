@@ -53,19 +53,24 @@ body {
   overflow: hidden;
 }
 
-/* 🔥 BIGGER THOUGHT TEXT */
 .word {
   position: absolute;
   font-weight: 800;
   white-space: nowrap;
-  font-size: 80px; /* 👈 main change (big + readable) */
+  font-size: clamp(50px, 14vw, 140px);
   letter-spacing: -1px;
   color: black;
-  opacity: 1;
   transition: all 0.4s ease;
 }
 
 body.post-hover .overlay-words {
   opacity: 0;
   transition: opacity 0.3s ease;
+}
+
+@media (max-width: 600px) {
+  .posts {
+    max-width: 90%;
+    font-size: 50px;
+  }
 }

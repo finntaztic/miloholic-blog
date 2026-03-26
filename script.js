@@ -24,7 +24,7 @@ for (let i = 0; i < cols; i++) {
   }
 }
 
-// shuffle helper
+// shuffle helper (fixed)
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
@@ -45,15 +45,14 @@ words.forEach((word, index) => {
 
 // place word
 function placeWord(el, pos) {
-  const size = 80;
-
   el.style.top = pos.y + "vh";
   el.style.left = pos.x + "vw";
-  el.style.fontSize = size + "px";
+
+  // ❌ no font size here (CSS controls it)
   el.style.fontFamily = fonts[Math.floor(Math.random() * fonts.length)];
   el.style.color = "black";
   el.style.opacity = 1;
-  el.style.transform = "none";
+  el.style.transform = "translate(-50%, -50%)"; // ✅ center nicely
 }
 
 // reshuffle (only on interaction)
@@ -77,6 +76,7 @@ window.addEventListener("touchstart", (e) => {
   reshuffle();
 });
 
+// smooth scroll trigger (debounced)
 let scrollTimeout;
 
 window.addEventListener("scroll", () => {
@@ -84,9 +84,8 @@ window.addEventListener("scroll", () => {
 
   scrollTimeout = setTimeout(() => {
     reshuffle();
-  }, 120); // 👈 adjust (100–200 is good)
+  }, 150);
 });
-
 
 // --- POST HOVER ---
 
