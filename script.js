@@ -45,8 +45,8 @@ words.forEach((word, index) => {
 
 // place word
 function placeWord(el, pos) {
-  el.style.top = pos.y + "vh";
-  el.style.left = pos.x + "vw";
+    el.style.top = pos.y + "%";
+    el.style.left = pos.x + "%";
 
   // ❌ no font size here (CSS controls it)
   el.style.fontFamily = fonts[Math.floor(Math.random() * fonts.length)];
