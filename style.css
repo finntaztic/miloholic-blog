@@ -57,7 +57,7 @@ body {
   position: absolute;
   font-weight: 800;
   white-space: nowrap;
-  font-size: clamp(50px, 14vw, 140px);
+  font-size: clamp(60px, 18vw, 140px); /* 🔥 MUCH bigger */
   letter-spacing: -1px;
   color: black;
   transition: all 0.4s ease;
@@ -67,10 +67,8 @@ body.post-hover .overlay-words {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
-
 @media (max-width: 600px) {
-  .posts {
-    max-width: 90%;
-    font-size: 50px;
+  .word {
+    font-size: 20vw; /* 🔥 huge on phones */
   }
 }

@@ -100,3 +100,9 @@ links.forEach((link) => {
     document.body.classList.remove("post-hover");
   });
 });
+
+@media (max-width: 600px) {
+  .word {
+    font-size: 20vw; /* 🔥 huge on phones */
+  }
+}
