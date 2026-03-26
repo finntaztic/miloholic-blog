@@ -1,24 +1,30 @@
-/* Reset & Fix Mobile Zoom */
+/* 1. BASE STYLES & MOBILE RESET */
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
   min-height: 100%;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
   background-color: white;
   font-family: sans-serif;
+  
+  /* ⛔️ THE FIX: Prevents mobile browsers from auto-scaling text */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  
+  /* Prevent horizontal scroll if words fly off screen */
+  overflow-x: hidden;
 }
 
-/* Center Content */
+/* 2. CENTER WRAPPER (Laptop Fix) */
 .main-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Centers horizontally */
   width: 100%;
   position: relative;
-  z-index: 10; /* Ensure links stay clickable above background */
+  z-index: 10;
 }
 
+/* 3. POSTS (The main text) */
 .posts {
   margin-top: 120px;
   padding: 0 20px 150px;
@@ -26,23 +32,46 @@ html, body {
   width: 90%;
   text-align: center;
   line-height: 2;
-  font-size: 20px;
+  font-size: 22px;
+  
+  /* Extra centering insurance */
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.post { display: inline; }
-.post::after { content: " / "; }
-.post:last-child::after { content: ""; }
-.post a { color: blue; text-decoration: none; padding: 2px 4px; }
-.post a:hover { background: blue; color: white; }
+.post {
+  display: inline;
+}
 
-/* The "Chaos" Layer */
+.post::after {
+  content: " / ";
+  color: #ccc;
+}
+
+.post:last-child::after {
+  content: "";
+}
+
+.post a {
+  color: blue;
+  text-decoration: none;
+  padding: 4px 8px;
+  transition: all 0.2s ease;
+}
+
+.post a:hover {
+  background: blue;
+  color: white;
+}
+
+/* 4. OVERLAY WORDS (The Background Chaos) */
 .overlay-words {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  pointer-events: none; /* Crucial: clicks pass through to links */
+  pointer-events: none; /* Makes background unclickable so links work */
   z-index: 1;
   overflow: hidden;
 }
@@ -51,23 +80,39 @@ html, body {
   position: absolute;
   font-weight: 800;
   white-space: nowrap;
-  /* This scales the word size based on screen width */
-  font-size: clamp(24px, 8vw, 100px); 
-  transform: translate(-50%, -50%);
   color: black;
-  transition: all 0.5s ease-out;
+  
+  /* Scalable font: Min 24px, Max 100px */
+  font-size: clamp(24px, 10vw, 100px); 
+  
+  letter-spacing: -1px;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transform: translate(-50%, -50%);
 }
 
-/* MOBILE FIXES */
+/* Fade background when hovering a link */
+body.post-hover .overlay-words {
+  opacity: 0.1;
+  transition: opacity 0.4s ease;
+}
+
+/* 5. MOBILE OVERRIDES (Phone Fix) */
 @media (max-width: 600px) {
   .posts {
-    margin-top: 60px;
-    font-size: 16px; /* Prevents text from being "huge" on mobile */
-    line-height: 1.8;
+    margin-top: 80px;
+    font-size: 17px; /* Readable but not "huge" */
+    line-height: 2.2;
+    padding: 0 15px 100px;
   }
-  
+
+  .post a {
+    padding: 6px 10px;
+  }
+
   .word {
-    font-size: 8vw; /* Forces background words to stay proportional */
-    opacity: 0.7;    /* Lower opacity helps readability on small screens */
+    /* ⛔️ Hard limit for background words on mobile */
+    font-size: 35px !important; 
+    font-weight: 900;
+    opacity: 0.8;
   }
 }
