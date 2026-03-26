@@ -1,11 +1,14 @@
-const text = "these thoughts never really stop";
+const text = "these thoughts never really stop lol pls work";
 const words = text.split(" ");
 const container = document.getElementById("overlayWords");
 
-const setupGrid = () => {
+const fonts = ["serif", "sans-serif", "monospace", "cursive"];
+let wordElements = [];
+
+function createGrid() {
   const isMobile = window.innerWidth < 600;
-  const cols = isMobile ? 3 : 6; // Fewer columns on phone
-  const rows = isMobile ? 8 : 4; 
+  const cols = isMobile ? 3 : 6;
+  const rows = isMobile ? 8 : 5;
   let positions = [];
 
   for (let i = 0; i < cols; i++) {
@@ -16,44 +19,34 @@ const setupGrid = () => {
       });
     }
   }
-  return positions;
-};
-
-let positions = setupGrid();
-const fonts = ["serif", "sans-serif", "monospace", "cursive"];
-const wordElements = [];
-
-function shuffle(array) {
-  return array.sort(() => Math.random() - 0.5);
+  return positions.sort(() => Math.random() - 0.5);
 }
 
-shuffle(positions);
+let activePositions = createGrid();
 
+// Create words once
 words.forEach((word, index) => {
   const el = document.createElement("span");
   el.className = "word";
   el.innerText = word;
+  el.style.fontFamily = fonts[Math.floor(Math.random() * fonts.length)];
   container.appendChild(el);
   wordElements.push(el);
-  placeWord(el, positions[index % positions.length]);
 });
 
-function placeWord(el, pos) {
-  el.style.top = pos.y + "%";
-  el.style.left = pos.x + "%";
-  el.style.fontFamily = fonts[Math.floor(Math.random() * fonts.length)];
-}
-
-function reshuffle() {
-  shuffle(positions);
+function positionWords() {
+  activePositions = createGrid();
   wordElements.forEach((el, i) => {
-    placeWord(el, positions[i % positions.length]);
+    const pos = activePositions[i % activePositions.length];
+    el.style.left = pos.x + "%";
+    el.style.top = pos.y + "%";
   });
 }
 
-window.addEventListener("click", reshuffle);
-window.addEventListener("touchstart", reshuffle);
-window.addEventListener("resize", () => {
-  positions = setupGrid();
-  reshuffle();
-});
+// Initial placement
+positionWords();
+
+// Listeners
+window.addEventListener("click", positionWords);
+window.addEventListener("touchstart", positionWords);
+window.addEventListener("resize", positionWords);

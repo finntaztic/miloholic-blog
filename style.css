@@ -1,65 +1,73 @@
+/* Reset & Fix Mobile Zoom */
 html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overflow-x: hidden; /* Stops horizontal scrolling from big words */
-  -webkit-text-size-adjust: 100%; /* Fixes the "huge font" bug */
+  min-height: 100%;
+  -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  background-color: white;
   font-family: sans-serif;
 }
 
-.container {
+/* Center Content */
+.main-wrapper {
   display: flex;
   justify-content: center;
   width: 100%;
+  position: relative;
+  z-index: 10; /* Ensure links stay clickable above background */
 }
 
 .posts {
-  margin-top: 100px;
+  margin-top: 120px;
   padding: 0 20px 150px;
   max-width: 500px;
   width: 90%;
   text-align: center;
   line-height: 2;
-  font-size: 20px; /* Base size */
-  position: relative;
-  z-index: 2; /* Keeps text above the chaos words */
+  font-size: 20px;
 }
 
 .post { display: inline; }
 .post::after { content: " / "; }
 .post:last-child::after { content: ""; }
-.post a { color: blue; text-decoration: none; }
+.post a { color: blue; text-decoration: none; padding: 2px 4px; }
+.post a:hover { background: blue; color: white; }
 
-/* CHAOS WORDS */
+/* The "Chaos" Layer */
 .overlay-words {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  pointer-events: none;
+  pointer-events: none; /* Crucial: clicks pass through to links */
   z-index: 1;
+  overflow: hidden;
 }
 
 .word {
   position: absolute;
   font-weight: 800;
   white-space: nowrap;
-  font-size: clamp(30px, 10vw, 80px); /* Responsive sizing */
+  /* This scales the word size based on screen width */
+  font-size: clamp(24px, 8vw, 100px); 
   transform: translate(-50%, -50%);
-  transition: all 0.4s ease;
+  color: black;
+  transition: all 0.5s ease-out;
 }
 
-/* MOBILE SPECIFIC OVERRIDES */
+/* MOBILE FIXES */
 @media (max-width: 600px) {
   .posts {
-    font-size: 16px; /* Smaller font on small screens */
     margin-top: 60px;
+    font-size: 16px; /* Prevents text from being "huge" on mobile */
+    line-height: 1.8;
   }
   
   .word {
-    /* Hard limit for mobile font size */
-    font-size: 32px !important; 
+    font-size: 8vw; /* Forces background words to stay proportional */
+    opacity: 0.7;    /* Lower opacity helps readability on small screens */
   }
 }
