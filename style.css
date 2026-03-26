@@ -15,12 +15,12 @@ body {
   max-width: 500px;
   width: 100%;
   text-align: center;
-  line-height: 1.8;
-  font-size: 22px;
+  line-height: 2;
+  font-size: clamp(22px, 5vw, 32px); /* 🔥 bigger + responsive */
 }
 
 .post {
-  display: inline;
+  display: inline; /* 🔥 important */
 }
 
 .post::after {
@@ -57,7 +57,7 @@ body {
   position: absolute;
   font-weight: 800;
   white-space: nowrap;
-  font-size: clamp(60px, 18vw, 140px); /* 🔥 MUCH bigger */
+  font-size: clamp(50px, 14vw, 140px);
   letter-spacing: -1px;
   color: black;
   transition: all 0.4s ease;
@@ -67,8 +67,15 @@ body.post-hover .overlay-words {
   opacity: 0;
   transition: opacity 0.3s ease;
 }
+
 @media (max-width: 600px) {
   .word {
-    font-size: 20vw; /* 🔥 huge on phones */
+    max-width: 90%;
+    font-size: 50px;
+  }
+
+  .posts {
+    font-size: 34px; /* 👈 bump for mobile */
+    line-height: 2;
   }
 }

@@ -101,8 +101,3 @@ links.forEach((link) => {
   });
 });
 
-@media (max-width: 600px) {
-  .word {
-    font-size: 20vw; /* 🔥 huge on phones */
-  }
-}
