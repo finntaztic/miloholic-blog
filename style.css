@@ -72,7 +72,7 @@ body.post-hover .overlay-words {
 
 @media (max-width: 600px) {
   .posts {
-    font-size: 500px;   /* consistent readable base */
+    font-size: 32px;   /* consistent readable base */
     line-height: 2.2;
   }
 
