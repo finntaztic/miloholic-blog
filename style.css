@@ -126,9 +126,15 @@ body.post-hover .overlay-words {
 
 .post-page .posts p {
   margin-bottom: 1.5em;
+  columns: blue;
 }
 
 /* remove the slash thing */
 .post-page .post::after {
   content: "";
+}
+
+/* hide floating words on post page */
+.post-page .overlay-words {
+  display: none;
 }
