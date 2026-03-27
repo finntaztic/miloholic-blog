@@ -150,3 +150,12 @@ body.post-hover .overlay-words {
   background: blue;
   color: white;
 }
+
+.post-page .posts img {
+  display: block;
+  width: 100%;
+  max-width: 500px;   /* matches your text width */
+  height: auto;
+
+  margin: 30px auto;  /* 👈 space above & below + centered */
+}
