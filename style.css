@@ -116,3 +116,19 @@ body.post-hover .overlay-words {
     opacity: 0.8;
   }
 }
+
+
+/* post page only */
+.post-page .posts {
+  text-align: left;
+  line-height: 1.8;
+}
+
+.post-page .posts p {
+  margin-bottom: 1.5em;
+}
+
+/* remove the slash thing */
+.post-page .post::after {
+  content: "";
+}
