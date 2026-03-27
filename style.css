@@ -164,3 +164,9 @@ body.post-hover .overlay-words {
 
   margin: 30px auto;  /* 👈 space above & below + centered */
 }
+
+
+.post-meta p {
+  margin: 0;          /* removes space */
+  line-height: 1.4;   /* keeps them close but readable */
+}
