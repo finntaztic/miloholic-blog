@@ -4,7 +4,7 @@ html, body {
   padding: 0;
   width: 100%;
   min-height: 100%;
-  background-color: white;
+  background-color: #D3D3D3;
   font-family: sans-serif;
   
   /* ⛔️ THE FIX: Prevents mobile browsers from auto-scaling text */
@@ -126,7 +126,7 @@ body.post-hover .overlay-words {
 
 .post-page .posts p {
   margin-bottom: 1.5em;
-  columns: blue;
+  color: blue;
 }
 
 /* remove the slash thing */
@@ -137,4 +137,16 @@ body.post-hover .overlay-words {
 /* hide floating words on post page */
 .post-page .overlay-words {
   display: none;
+}
+
+
+.post-page .posts a {
+  color: blue;
+  text-decoration: none;
+  text-decoration: underline;
+}
+
+.post-page .posts a:hover {
+  background: blue;
+  color: white;
 }
