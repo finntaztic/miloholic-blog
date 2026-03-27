@@ -115,6 +115,11 @@ body.post-hover .overlay-words {
     font-weight: 900;
     opacity: 0.8;
   }
+
+  .post-page .posts img {
+  max-width: 320px;  /* 👈 cap size on phones */
+  margin: 20px auto;
+}
 }
 
 
